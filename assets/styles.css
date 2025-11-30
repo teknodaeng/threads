@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.thread {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.reply {
+  margin-left: 20px;
+  border-left: 2px solid #eee;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.meta {
+  font-size: 12px;
+  color: #666;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.auth-links {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.login-prompt {
+  background: #f9f9f9;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.btnLike {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.btnLike.liked {
+  background-color: #ffeaea;
+  border-color: #ffcccc;
+  color: #d00;
+}
