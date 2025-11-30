@@ -18,6 +18,11 @@ A lightweight social media platform clone built with native PHP, MySQL, and Tail
 - **Search**: Real-time search for users and threads.
 - **Notifications**: Updates on likes, replies, and new followers.
 - **Profile**: User profiles with avatar upload, follower counts, and post history.
+- **📱 Mobile Experience**:
+  - **Responsive Layout**: Optimized for mobile devices.
+  - **Bottom Navigation**: Native-app style navigation bar on mobile.
+  - **PWA Support**: Installable as a native app (Progressive Web App).
+  - **Offline Mode**: Basic offline support with fallback page.
 
 ### 🛡️ Administration
 
