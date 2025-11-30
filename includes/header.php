@@ -12,6 +12,21 @@ $is_logged_in = isset($_SESSION['user_id']);
     <title><?= $page_title ?></title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="./assets/output.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -44,7 +59,7 @@ $is_logged_in = isset($_SESSION['user_id']);
                 <h1 class="text-2xl font-bold text-blue-600">
                     <a href="index.php" class="hover:text-blue-500">Mini Threads</a>
                 </h1>
-                <nav class="flex items-center space-x-4 text-sm text-gray-600">
+                <nav class="hidden md:flex items-center space-x-4 text-sm text-gray-600">
                     <a href="search.php" class="hover:text-blue-500 inline-flex items-center" title="Search">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,6 +101,10 @@ $is_logged_in = isset($_SESSION['user_id']);
                         <a href="login.php" class="hover:text-blue-500">Login</a>
                         <a href="register.php" class="hover:text-blue-500">Register</a>
                     <?php endif; ?>
+                    <button id="installAppBtn"
+                        class="hidden bg-blue-600 text-white px-3 py-1 rounded-full hover:bg-blue-700 transition text-sm font-medium mr-2">
+                        Install App
+                    </button>
                 </nav>
             </div>
         </div>
@@ -93,3 +112,4 @@ $is_logged_in = isset($_SESSION['user_id']);
 
     <!-- Main Content -->
     <main class="flex-1">
+        <script src="assets/install.js" defer></script>

@@ -311,11 +311,20 @@ require_once 'includes/header.php';
                     if (res.success) {
                         const unreadCount = res.notifications.filter(n => n.is_read == 0).length;
                         const badge = document.getElementById('notifBadge');
+                        const mobileBadge = document.getElementById('mobileNotifBadge');
+
                         if (unreadCount > 0) {
-                            badge.innerText = unreadCount;
-                            badge.classList.remove('hidden');
+                            if (badge) {
+                                badge.innerText = unreadCount;
+                                badge.classList.remove('hidden');
+                            }
+                            if (mobileBadge) {
+                                mobileBadge.innerText = unreadCount;
+                                mobileBadge.classList.remove('hidden');
+                            }
                         } else {
-                            badge.classList.add('hidden');
+                            if (badge) badge.classList.add('hidden');
+                            if (mobileBadge) mobileBadge.classList.add('hidden');
                         }
                     }
                 });
