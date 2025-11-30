@@ -119,6 +119,22 @@ require_once 'includes/header.php';
                     <?= $is_following ? 'Following' : 'Follow' ?>
                 </button>
             <?php endif; ?>
+
+            <?php if ($is_logged_in && $currentUserId == $user['id']): ?>
+                <button id="mobileInstallAppBtn"
+                    class="hidden w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-full font-bold hover:bg-blue-700 transition">
+                    Install App
+                </button>
+                <a href="logout.php"
+                    class="md:hidden mt-4 text-red-500 hover:text-red-700 font-medium text-sm flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                    Logout
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -259,11 +275,20 @@ require_once 'includes/header.php';
                     if (res.success) {
                         const unreadCount = res.notifications.filter(n => n.is_read == 0).length;
                         const badge = document.getElementById('notifBadge');
+                        const mobileBadge = document.getElementById('mobileNotifBadge');
+
                         if (unreadCount > 0) {
-                            badge.innerText = unreadCount;
-                            badge.classList.remove('hidden');
+                            if (badge) {
+                                badge.innerText = unreadCount;
+                                badge.classList.remove('hidden');
+                            }
+                            if (mobileBadge) {
+                                mobileBadge.innerText = unreadCount;
+                                mobileBadge.classList.remove('hidden');
+                            }
                         } else {
-                            badge.classList.add('hidden');
+                            if (badge) badge.classList.add('hidden');
+                            if (mobileBadge) mobileBadge.classList.add('hidden');
                         }
                     }
                 });
